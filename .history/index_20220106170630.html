@@ -32,6 +32,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
  <style type="text/css">
+     .logo img{
+        height:52px;
+        width: 200px;
+       margin-top: 0px;
+     }
      .error{
         color: red;
      }
@@ -65,7 +70,7 @@
        <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a class="logo me-auto" href="index.html" ><img style="height: 200px;" src="images/logo1.png"  class="nav-link" href="index.html"></a>
+      <a class="logo me-auto" href="index.html" ><img src="images/logo1.png"  class="nav-link" href="index.html"></a>
     
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -156,23 +161,22 @@
                                 </span>
                             </div>
                             <div>
-                                <input type="email" name="email" ng-model="email" placeholder="Enter Your Email" />
+                                <input type="email" name="email" ng-model="email" placeholder="Email" />
                                 <span ng-show="myForm.$submitted || myForm.email.$dirty">
-    
-                            <span class="error" ng-show="myForm.email.$error.email">enter valid email</span>
+                                    <span class="error"  ng-show="myForm.email.$invalid && myForm.email.$touched">Ema required</span>
+                                 <span class="error" ng-show="myForm.email.$error.email">enter valid email</span>
     
                             </span>
                             </div>
                             <div>
-                                <input type="text" name="Phone" placeholder="Phone no" ng-model="Phone"  ng-minlength="11" ng-maxlength="12" ng-pattern="/^[7-9][0-9]{9}$/" required />
-                                <span ng-show="myForm.$submitted || myForm.Phone.$dirty">
-                                    <span class="error" ng-show="myForm.Phone.$error.required">Mobile number required</span>
-                                    <span class="error" ng-show="myForm.Phone.$error.pattern">Please enter valid number!</span>
-                                    <span class="error" ng-show="myForm.Phone.$dirty && myForm.phone.$error.minlength">Contact no can't be less than 11</span>
-                 <span class="error" ng-show="myForm.Phone.$dirty && myForm.Phone.$error.maxlength">Contact no can't be more than 14</span>  		</span>
+                                <input type="text" name="Phone" placeholder="Phone no" ng-model="Phone"  ng-minlength="11" ng-maxlength="12" required onlyDigits />
+                                <span class="error" ng-show="myForm.Phone.$touched">Mobile number required</span>
+                                <span class="error" ng-show="myForm.Phone.$dirty && myForm.Phone.$error.required">Mobile number required</span>
+<span class="error" ng-show="myForm.Phone.$dirty && myForm.Phone.$error.minlength">Contact no can't be less than 11</span>
+<span class="error" ng-show="myForm.Phone.$dirty && myForm.Phone.$error.maxlength">Contact no can't be more than 14</span>
                             </div>
                             <div class="text-center">
-                                <input type="submit" class="btn-default" value="Get Free Quote"  ng-disabled="userForm.$invalid" />
+                                <input type="submit" class="btn-default" value="Get Free Quote" />
                             </div>
                         </form>
                     </div>
